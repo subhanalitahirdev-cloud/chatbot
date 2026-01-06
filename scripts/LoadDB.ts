@@ -1,4 +1,5 @@
 import { DataAPIClient } from "@datastax/astra-db-ts";
+import { PuppeteerWebBaseLoader } from "@langchain/community/document_loaders/web/puppeteer";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import "dotenv/config";
 type SimilarityMetric = "dot_product" | "cosine" | "euclidean";
@@ -38,18 +39,46 @@ const createCollection = async (
       metric: similarityMetric,
     },
   });
+  console.log(res);
 };
 const loadSampleData = async () => {
   const collection = await db.collection(ASTRA_DB_COLLECTION || "upvavegpt");
   for await (const url of upvaveData) {
     const content = await scrapePage(url);
-    const chunks = await splitter.splitText(content);
+    const chunks = await splitter.splitText(
+      typeof content === "string" ? content : ""
+    );
     for await (const chunk of chunks) {
       const embedding = await openai.embeddings.create({
         model: "text-embedding-3-small",
         input: chunk,
         encoding_format: "float",
       });
+      const vector = embedding.data[0].embedding;
+      const res = await collection.insertOne({
+        $vector: vector,
+        text: chunk,
+      });
+      console.log(res);
     }
   }
 };
+const scrapePage = async (url: string) => {
+  const loader = new PuppeteerWebBaseLoader(url, {
+    launchOptions: {
+      headless: true,
+    },
+    gotoOptions: {
+      waitUntil: "domcontentloaded",
+    },
+    evaluate: async (page, browser) => {
+      const result = await page.evaluate(() => document.body.innerHTML);
+      await browser.close();
+      return result;
+    },
+  });
+  const scraped = await loader.scrape();
+  return scraped?.replace(/\n/g, " ");
+};
+
+createCollection().then(() => loadSampleData());
