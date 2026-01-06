@@ -12,7 +12,6 @@
   "dependencies": {
     "@ai-sdk/react": "^3.0.11",
     "@datastax/astra-db-ts": "^2.1.2",
-    "@langchain/community": "^1.1.2",
     "@langchain/core": "^1.1.8",
     "@langchain/openai": "^1.2.1",
     "@langchain/textsplitters": "^1.0.1",
@@ -20,11 +19,13 @@
     "ai": "^6.0.11",
     "dotenv": "^16.6.1",
     "langchain": "^1.2.4",
+    "lottie-react": "^2.4.1",
     "next": "16.1.1",
     "openai": "^6.15.0",
     "puppeteer": "^24.34.0",
     "react": "^19.2.3",
     "react-dom": "19.2.3",
+    "react-icons": "^5.5.0",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
