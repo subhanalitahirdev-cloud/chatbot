@@ -10,7 +10,7 @@ const PromptSuggestionRow: React.FC<PromptSuggestionRowProps> = ({ onPromptClick
     "What is Upvave?",
     "What services does Upvave offer?",
     "How can Upvave help my business grow?",
-    "How to contact with Upvave?.",
+    "How to contact with Upvave?",
   ];
 
   return (
