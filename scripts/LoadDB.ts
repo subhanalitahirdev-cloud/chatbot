@@ -1,9 +1,9 @@
 /*
 ---- IMPORTANT: UNCOMMIT THIS FILE WHEN YOU NEED TO STORE MORE DATA IN VECTOR AND STORE THEM IN DATASTAX ----
-This file has a depreciated dependency with the package name of "@langchain/community", which is currently not maintained and causes issues with the latest versions of other langchain packages. That is why that dependecy has been removed from the package.json file to avoid conflicts. If you need to change or add more data to the vector database, please uncommit this file, add the dependency "@langchain/community": "^1.1.2" back to the package.json file, run "npm seed" to add the data into the datastax database.
+This file has a depreciated dependency with the package name of "@langchain/community --legacy-peer-deps", which is currently not maintained and causes issues with the latest versions of other langchain packages. That is why that dependecy has been removed from the package.json file to avoid conflicts. If you need to change or add more data to the vector database, please uncommit this file, add the dependency "@langchain/community": "^1.1.2" back to the package.json file, run "npm seed" to add the data into the datastax database.
 To use this file, please follow these steps:    
 1- Uncommit this file from git.
-2- Add the dependency "@langchain/community": "^1.1.2" back to the package.json file.
+2- Add the dependency "@langchain/community --legacy-peer-deps": "^1.1.2" back to the package.json file.
 3- Run "npm seed" to add the data to database.
 */
 
