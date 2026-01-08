@@ -485,6 +485,1424 @@ Scalable, real-time collaboration built on a serverless stack.
 
 Artist attribution automation via AI-driven metadata analysis.
 
+5 - cprogrowth.com CPro Growth — AI-Enhanced Marketing & PPC Management Intelligence
+Overview
+We built CPro Growth as a next-generation marketing management and PPC automation platform, engineered to help businesses scale advertising performance through intelligent data interpretation, automated recommendations, and predictive optimization.
+CPro Growth acts as a growth operations layer — merging human marketing strategies with AI systems that monitor, analyze, and fine-tune campaigns in real time across platforms like Google Ads, Meta Ads, and LinkedIn Campaign Manager.
+Problem
+Marketing agencies and growth teams face a growing complexity problem:
+Each platform — Google, Meta, LinkedIn, TikTok — operates on separate analytics systems, campaign formats, and bidding models.
+Manual tracking wastes hours weekly, and human bias limits optimization.
+We identified the need for a centralized AI-driven PPC governance system — one that could unify campaign data, detect inefficiencies, and autonomously suggest (or even execute) optimization changes.
+Solution
+We engineered CPro Growth to operate as a data-driven growth intelligence hub, capable of:
+Ingesting campaign data via APIs (Google Ads, Meta, LinkedIn).
+
+
+Normalizing data across channels to a unified schema.
+
+
+Running AI analytics for cost, ROI, and audience segmentation.
+
+
+Generating predictive insights (budget reallocation, keyword bidding strategies, and content impact analysis).
+
+
+Automating adjustments through authenticated ad manager APIs.
+
+
+We also integrated AI-generated campaign content (ad headlines, copies, CTAs) that dynamically adapts to audience behavior — effectively merging creative and analytical intelligence.
+Technical Architecture & Stack
+Frontend
+Framework: Next.js + TypeScript
+
+
+UI System: TailwindCSS, Recharts for data visualization
+
+
+State Management: React Query + Zustand
+
+
+Dashboard Features: Real-time performance tracking, anomaly detection alerts, and cost forecasting charts
+
+
+Backend
+Core Environment: Node.js (TypeScript)
+
+
+APIs: Integrated Google Ads API, Facebook Marketing API, and LinkedIn Campaign API
+
+
+AI Engine: Python microservice (FastAPI) using scikit-learn + GPT-based models for text generation
+
+
+Automation Layer: Webhooks for scheduled optimization routines (budget allocation, keyword refresh, etc.)
+
+
+Database: PostgreSQL (Supabase managed)
+
+
+Queue System: BullMQ (Redis) for background job orchestration
+
+
+Authentication: JWT-based secure OAuth integration with each ad platform
+
+
+Infrastructure
+Hosting: AWS ECS for backend services + Supabase for DB and Realtime APIs
+
+
+Monitoring: Prometheus + Grafana dashboards for server metrics
+
+
+CI/CD: GitHub Actions + Docker deploy pipelines
+
+
+Data Layer: ETL pipelines normalizing API data into analytics-friendly schemas
+
+
+AI & Marketing Intelligence
+Predictive Budget Allocation: ML models analyze trends and reallocate ad spend across campaigns for higher ROI.
+
+
+Automated A/B Insights: AI observes copy performance and generates new content variants automatically.
+
+
+Conversion Forecasting: Regression-based models predict campaign outcomes based on current spend rate.
+
+
+PPC Performance Alerts: System sends Slack or email alerts when ROAS drops below threshold.
+
+
+Smart Recommendations: Suggests audience retargeting and bidding strategy shifts based on real-time campaign feedback.
+
+
+Outcome & Impact
+CPro Growth elevated PPC management from reactive dashboards to proactive growth automation.
+It empowered marketing teams to cut manual oversight by over 60%, while improving campaign ROI through continuous AI learning cycles.
+We achieved:
+Up to 35% ROAS improvement through automated optimizations.
+
+
+Cross-platform performance visibility in a unified dashboard.
+
+
+Fully autonomous growth workflows, reducing human load and error.
+
+
+CPro Growth stands as a model of how AI-driven marketing intelligence can bridge creative intent and analytical precision — scaling growth operations without scaling headcount.
+
+6 - ShopOnPickle — Gmail API Automation & Token Intelligence System
+Overview
+We built ShopOnPickle as a specialized Gmail API automation and token utilization platform — an intelligent system designed to automate high-volume email workflows, integrate user accounts securely, and perform AI-assisted actions directly within Gmail environments.
+ShopOnPickle enables businesses to automate repetitive communication, manage authentication tokens dynamically, and build secure, scalable integrations around Google’s email ecosystem — powering intelligent inbox automation and marketing operations.
+Problem
+Managing Gmail-based workflows for large-scale automation (like campaign responses, transactional follow-ups, or inbox classification) poses two major challenges:
+Token management & refresh cycles — OAuth tokens frequently expire or become invalid across multi-user environments.
+
+
+Scalable automation — Traditional approaches like cron jobs or static scripts fail to handle live triggers, response logic, and API rate limits efficiently.
+
+
+We needed to engineer a resilient, intelligent automation system that could manage tokens autonomously, execute workflows contextually, and interact with the Gmail API securely at scale.
+Solution
+We developed ShopOnPickle as a token-aware Gmail automation framework that combines AI intelligence, OAuth lifecycle management, and modular automation pipelines.
+It securely connects Gmail accounts, monitors inbox activity, and executes context-aware actions — such as responding, labeling, or forwarding emails — based on custom AI rules or workflows.
+The system continuously:
+Monitors Gmail message streams in real-time.
+
+
+Refreshes and revalidates tokens automatically.
+
+
+Uses AI models to classify, prioritize, or draft email responses.
+
+
+Executes workflows (like tagging or data sync) without manual triggers.
+
+
+
+Technical Architecture & Stack
+Core Stack
+Frontend: Next.js (TypeScript) for admin & dashboard interfaces
+
+
+Backend: Node.js (TypeScript) + Express
+
+
+Database: PostgreSQL for user data, token state, and workflow configurations
+
+
+Cache Layer: Redis for token caching and rate-limit tracking
+
+
+AI Engine: LangChain pipeline for automated email classification and summarization
+
+
+API Integration: Gmail REST API + Google OAuth 2.0 for account access
+
+
+Job Queue: BullMQ (Redis-backed) for task scheduling and background automation
+
+
+Token Intelligence System
+Auto-refreshes expired tokens and regenerates new ones without user intervention.
+
+
+Implements encryption for stored tokens using AES256.
+
+
+Detects revoked tokens and gracefully reauthenticates via secure prompts.
+
+
+Maintains token usage logs and audit trails for security compliance.
+
+
+Automation Layer
+Event-driven pipelines using Gmail webhooks (push notifications).
+
+
+AI-triggered workflows — e.g., “if subject includes invoice → extract data → forward to accounting.”
+
+
+Integration hooks for Slack, Notion, and third-party CRMs.
+
+
+Infrastructure
+Hosting: AWS Lambda (serverless execution) for automation functions.
+
+
+Monitoring: Grafana + Loki for log analysis and automation health tracking.
+
+
+Deployment: Dockerized build pipeline + GitHub Actions for CI/CD.
+AI & Automation Intelligence
+Contextual Response Generation: GPT-based models generate personalized email replies aligned with message tone and content.
+
+
+Inbox Classification: NLP models detect intent (“support”, “sales”, “follow-up”) and apply labels automatically.
+
+
+Workflow Execution: AI triggers rules — such as forwarding invoices, flagging leads, or syncing contact data — without human input.
+
+
+Smart Token Manager: Monitors OAuth health, refresh cycles, and authorization scope utilization across accounts.
+
+
+Outcome & Impact
+ShopOnPickle turned Gmail from a static inbox into a living automation platform.
+Businesses achieved:
+100% uptime on token lifecycle management, eliminating manual reauth.
+
+
+Over 60% reduction in repetitive inbox tasks through automation.
+
+
+Seamless integration with CRM and analytics tools for end-to-end visibility.
+
+
+It showcases our ability to merge AI automation, DevOps reliability, and API orchestration into a scalable, production-grade intelligence system.
+
+7- CV Optimizer — AI Resume Parser, Optimizer & Job-Aware Cover Letters
+Overview
+I built CV Optimizer to turn raw CVs into ATS-optimized resumes and job-specific cover letters. It parses PDFs/DOCX into structured data, scores each resume against a target job description, and provides actionable, line-level rewrites with side-by-side diffs. The platform is LLM-orchestrated with deterministic checks, exportable as ATS-friendly PDF/DOCX, and deployed on AWS for production reliability.
+Problem
+CVs often fail ATS parsing: noisy layouts, missing entities, and inconsistent dates.
+
+
+Poor job matching: weak keyword alignment and generic phrasing.
+
+
+Personalization is slow: tailoring a resume + cover letter per role is tedious.
+
+
+Feedback is opaque: candidates don’t see what to fix and why.
+
+
+Solution
+A parse → analyze → optimize → personalize pipeline:
+Upload & Parse: Extract contact, roles, dates, skills, education, certs, links.
+
+
+Job Targeting: Normalize JD requirements and critical skills/keywords.
+
+
+Scoring: Compute ATS Readiness and Job Match with transparent weights.
+
+
+AI Optimization: Rewrite bullets (impact-first, quantified), normalize sections, align keywords, fix tense/voice.
+
+
+Personalized Cover Letter: Draft a concise, company-aware letter conditioned on JD and company signals.
+
+
+Explainability: Side-by-side diffs with rationale for each change.
+
+
+Export & Versions: Download ATS-safe PDF/DOCX and keep per-job variants.
+
+
+Technical Architecture & Stack
+Core Stack
+Frontend: Next.js 14 (App Router) + TypeScript, Tailwind, shadcn/ui, React Hook Form, Zod, TanStack Query.
+
+
+Backend: Node.js (TypeScript), Express/NestJS, REST + tRPC (internal).
+
+
+Database: PostgreSQL (AWS Aurora) for users, documents, entities, scores, versions.
+
+
+Storage: Amazon S3 (private buckets, signed URLs) for originals/exports.
+
+
+Cache/Queues: Redis (ElastiCache) for sessions/rate limits; SQS + BullMQ for async jobs.
+
+
+Vectors/Search: pgvector (Aurora) or OpenSearch k-NN for JD/CV similarity.
+
+
+AI Orchestration: LangChain/LlamaIndex with schema-validated JSON outputs.
+
+
+Parsing: pdfminer/pdfplumber, Apache Tika, LibreOffice headless; custom regex + spaCy NER.
+
+
+Templating: Handlebars/EJS + DOCX templater for resume/letter themes.
+
+
+AWS Production Infrastructure
+Compute: ECS Fargate (APIs, workers) + Lambda for bursty parsing.
+
+
+Edge & Networking: CloudFront + S3, WAF, ALB, VPC (private subnets).
+
+
+Data & Secrets: Aurora (Multi-AZ), S3 SSE-KMS, ElastiCache, OpenSearch, Secrets Manager, KMS.
+
+
+Observability: CloudWatch/X-Ray, Grafana/Loki; cost and latency tagging per feature.
+
+
+CI/CD & IaC: GitHub Actions → ECR → ECS blue/green; Terraform or CDK.
+
+
+LLM & AI Components
+Model adapters: OpenAI/Anthropic/Azure via a provider-agnostic layer.
+
+
+Tools & Guards:
+
+
+Resume Rewrite Tool (quantify, STAR structure, tense normalization).
+
+
+Keyword Alignment Tool (semantic expansion without stuffing).
+
+
+Cover Letter Writer (hook → impact narrative → closing CTA).
+
+
+Sections Normalizer (standard headers, chronological order).
+
+
+Grounding & Safety: Embedding-based retrieval over user CV + JD; Zod schema validation; strict ban on hallucinated employers/credentials.
+
+
+Scoring Engine (0–100, Transparent)
+Total = 0.30·ATS + 0.40·Match + 0.20·Impact + 0.10·Presentation
+ATS Readiness (30%): headers, contact completeness, parse-ability, link hygiene, date consistency.
+
+
+Job Match (40%): critical keywords (exact/semantic), seniority, stack/tools, domain overlap, certs.
+
+
+Impact Quality (20%): quantification, action verbs, outcome clarity, readability.
+
+
+Presentation (10%): concise length by seniority, whitespace, consistent units/typography.
+
+
+Each sub-metric surfaces fix-it tips with one-click rewrites.
+Key User Flows
+Quick Optimize: Upload → parse → add JD → score → “Rewrite All” → export PDF/DOCX.
+
+
+Per-Job Variants: Branch resume per role with diffs and independent scores.
+
+
+Cover Letter: Generate/edit tone (“neutral”/“warm”); export DOCX.
+
+
+Team Mode (optional): Bulk uploads and cohort analytics.
+
+
+API Surface (selected)
+POST /api/parse → { file } → entities
+
+
+POST /api/optimize → { documentId, jobId, style } → optimized doc
+
+
+POST /api/cover-letter → { documentId, jobId, tone } → cover letter doc
+
+
+POST /api/score → { documentId, jobId } → { total, breakdown }
+
+
+GET /api/diff?from&to → unified diff JSON
+
+
+POST /api/export → { documentId, format } → signed URL
+
+
+Auth: Cognito/OpenID; short-lived JWT + refresh; per-doc ACL.
+Frontend UX (Next.js + TypeScript)
+Drag-and-drop uploader; file type guard.
+
+
+Diff viewer with inline annotations and accept/reject per change.
+
+
+Score dashboard with gauges, tooltips, and “Fix with AI” actions.
+
+
+JD panel with critical must-haves and keyword cloud.
+
+
+Template picker (ATS-safe), export center, version history.
+
+
+Security & Privacy
+PII controls: Minimization, user-initiated purge, redaction in logs.
+
+
+Encryption: S3 SSE-KMS, Aurora at rest, Redis in-transit TLS.
+
+
+Edge security: TLS 1.2+, HSTS, WAF managed rules; IAM least-privilege.
+
+
+Auditability: Per-action audit logs and model call tracing.
+
+
+Observability & Reliability
+SLIs: parse success, optimization latency (P95), export success, model error rate.
+
+
+SLOs: 99.9% API uptime; P95 optimize < 12s; export < 3s.
+
+
+Alerts: queue backlog, JD parser failures, WAF block spikes.
+
+
+Outcomes
+Higher interview rates via stronger keyword coverage and quantified impact.
+
+
+Faster personalization—tailored resumes and letters in minutes, not hours.
+
+
+Consistent ATS pass-through using validated structure and deterministic formatting.
+
+
+Tech Tags
+Frontend: Next.js 14, TypeScript, React, Tailwind, shadcn/ui, RHF, Zod, TanStack Query
+Backend: Node.js, TypeScript, Express/NestJS, tRPC, REST, Prisma/Drizzle, BullMQ, SQS, Redis, PostgreSQL (Aurora), pgvector, OpenSearch
+AI/ML: LLM Orchestration, LangChain, RAG, Embeddings, spaCy NER, Prompt Engineering, Guardrails, JSON-mode
+Parsing/Docs: pdfminer, pdfplumber, Apache Tika, LibreOffice headless, DOCX templating
+Infra/DevOps: AWS (ECS Fargate, Lambda, S3, CloudFront, RDS Aurora, ElastiCache, OpenSearch, SQS, Secrets Manager, KMS, WAF, CloudWatch, X-Ray, ECR), Terraform/CDK, GitHub Actions, Docker
+Security: IAM least-privilege, KMS, JWT/OIDC, TLS, WAF, PII Redaction, Audit Logging
+Testing: Playwright, Vitest/Jest, Pact, k6, Trivy, OPA/Conftest
+
+
+8- Rosiq.io — Real-Time AI Classroom Translation Platform
+Overview
+Rosiq.io is an AI-driven live translation and communication platform built for multilingual classrooms. It enables real-time translation of lectures so students and teachers can interact seamlessly across languages.
+When a teacher speaks, the system transcribes speech, translates it into multiple target languages, and streams both text and synthesized audio to students — all in real time. Students can also respond or ask questions via a multilingual chat interface.
+The goal is to eliminate language barriers in global education, transforming any classroom into a universally accessible learning space powered by advanced AI and cloud scalability.
+Problem
+In multilingual classrooms, language barriers create significant challenges:
+Slow translation latency: Students often experience 3–5 second delays, breaking lecture flow.
+
+
+Limited scalability: System capacity tops out at ~20 users due to single-threaded connections.
+
+
+High infrastructure costs: GPU servers run at only 30–40% utilization.
+
+
+No caching or monitoring: Repeated translations waste compute, and performance bottlenecks are invisible.
+
+
+These issues made the prototype functional but not production-ready or cost-efficient.
+Solution
+We engineered Rosiq.io into a scalable, low-latency, enterprise-ready AI platform by introducing:
+Parallel AI pipelines — Speech-to-text, translation, and text-to-speech now execute concurrently.
+
+
+Dynamic resource allocation — Models load only when needed, maximizing GPU throughput.
+
+
+Smart caching — Reuses translations for repeated phrases, reducing redundant inference calls.
+
+
+Load balancing and horizontal scaling — Supports hundreds of concurrent users across servers.
+
+
+Real-time monitoring and analytics — Live dashboards for latency, utilization, and throughput metrics.
+
+
+This redesign reduced latency by up to 60%, doubled GPU efficiency, and scaled the system to 10× more concurrent users.
+Technical Architecture & Stack
+Core Stack
+Frontend: Angular (TypeScript) web client for teachers and students.
+
+
+Backend: FastAPI (Python) — manages speech pipelines, translation orchestration, and WebSocket communication.
+
+
+AI Engines:
+
+
+Speech Recognition: WhisperLive (OpenAI Whisper variant)
+
+
+Translation: Argos Translate (offline, customizable multilingual model)
+
+
+Text-to-Speech: Bark AI for natural audio synthesis
+
+
+Real-Time Communication: WebSockets for bi-directional event streaming (speech → text → translation → audio).
+
+
+Deployment: GPU-backed cloud servers (NVIDIA A100 instances).
+
+
+Infrastructure Enhancements
+Parallel Processing: Each translation stage runs concurrently using async I/O and GPU streams.
+
+
+Caching Layer: Local memory + shared database caching to reuse common phrases and responses.
+
+
+Dynamic Model Loading: Models loaded and unloaded based on live session demand to reduce idle GPU time.
+
+
+Load Balancing: NGINX + FastAPI worker pools distribute sessions across servers.
+
+
+Monitoring: Grafana + Loki dashboards visualize latency, concurrency, and GPU utilization.
+
+
+Scaling: Horizontal scaling via Dockerized containers orchestrated through Kubernetes or ECS.
+
+
+Performance Improvements
+Metric
+Before
+After
+Improvement
+Response Time
+3–5 sec
+1–2 sec
+↓ 60% latency
+Concurrent Users
+10–20
+100–200
+↑ 10× capacity
+GPU Utilization
+30–40%
+70–85%
+↑ 2× efficiency
+Operational Cost
+Baseline
+-40–50%
+↓ half cost
+System Reliability
+Untracked
+99.9% uptime
+Enterprise-grade
+
+Implementation Phases
+Phase 1: Quick Wins (Weeks 1–2)
+Added caching layer
+
+
+Introduced real-time performance dashboards
+
+
+Optimized WebSocket management
+
+
+→ Result: 30–40% immediate speed improvement.
+Phase 2: Core Optimizations (Weeks 3–4)
+Introduced parallel AI pipelines
+
+
+Implemented GPU task scheduling
+
+
+Added load balancing and multi-streaming
+
+
+→ Result: 60–70% efficiency boost, scalable classroom handling.
+Phase 3: Advanced Features (Weeks 5–6)
+Auto-scaling and GPU pooling
+
+
+Advanced analytics dashboards
+
+
+Performance anomaly detection
+
+
+→ Result: Enterprise-ready, production-deployable system.
+Business Impact
+Cost Savings
+Dynamic model loading and caching halved GPU costs.
+
+
+Optimized utilization reduced server count per classroom deployment.
+
+
+User Experience
+1–2 second latency creates near-instant translation feedback.
+
+
+Reliable scaling supports large multilingual classes smoothly.
+
+
+Competitive Edge
+10× more concurrent users than prior baseline.
+
+
+Sub-2-second round-trip time outperforms other educational translation platforms.
+
+
+Enterprise-grade monitoring and 99.9% uptime readiness.
+
+
+Outcome
+Rosiq.io evolved from a working prototype into a scalable, intelligent classroom communication system capable of real-time multilingual interaction.
+It now provides:
+Faster, parallel AI translation pipelines
+
+
+Optimized GPU resource management
+
+
+Full observability and cost control
+
+
+Seamless scalability for 100–200 concurrent users
+
+
+This positions Rosiq.io as a market-ready, AI-powered educational platform bridging language barriers through real-time communication.
+Tech Tags
+Frontend: Angular, TypeScript, RxJS, WebSocket, TailwindCSS
+Backend: FastAPI, Python, asyncio, WebSocket, REST, NGINX
+AI Models: WhisperLive (ASR), Argos Translate (MT), Bark AI (TTS), ONNX Runtime, TorchServe
+Infrastructure: Docker, Kubernetes/ECS, GPU (A100/T4), Redis (cache), PostgreSQL, Grafana, Loki
+Cloud: AWS EC2, S3, CloudWatch, ECR, Auto Scaling Groups
+Performance: Parallel AI Pipelines, Smart Caching, GPU Stream Optimization, Load Balancing, Monitoring Dashboards
+Security: HTTPS/WSS, Token Auth, IAM-based Access, Logging & Alerts
+
+9- CostCloud — AI-Driven Cloud Cost Intelligence, Forecasting & DevOps Optimization Platform
+Overview
+CostCloud is a DevOps-first infrastructure cost optimization and forecasting platform that I built from scratch. It enables teams to analyze multi-cloud and on-premise infrastructure, forecast future budget trends, and receive AI-generated recommendations for architectural cost efficiency.
+At its core, CostCloud integrates Prometheus, Grafana, and GraphQL APIs to collect, visualize, and analyze infrastructure metrics in real time — while an AI engine performs predictive cost modeling and optimization across AWS, Azure, GCP, and hybrid workloads.
+It acts as an intelligent layer on top of DevOps monitoring — bridging infrastructure observability with financial analytics to make cloud budgeting autonomous, accurate, and adaptive.
+Problem
+Modern DevOps and FinOps teams face critical pain points:
+Fragmented visibility — Resource utilization data spread across monitoring tools without unified financial context.
+
+
+Manual forecasting — Teams estimate costs and performance manually using spreadsheets or provider calculators.
+
+
+Reactive budget management — Costs discovered after overspend happens.
+
+
+No predictive insight — Infrastructure scaling patterns are rarely modeled ahead of time for cost or performance optimization.
+
+
+Traditional monitoring tools (like Prometheus or Grafana) visualize what’s happening, but not what’s coming next.
+CostCloud closes that gap by combining live metrics + AI forecasting for proactive infrastructure and budget control.
+Solution
+CostCloud delivers an end-to-end DevOps intelligence system that merges observability, forecasting, and AI-driven decisioning.
+Real-Time Infrastructure Monitoring
+
+
+Unified metrics ingestion from Kubernetes clusters, VM instances, and on-prem servers via Prometheus exporters.
+
+
+Centralized Grafana dashboards with live visualization for CPU, memory, I/O, network, and cost burn rates.
+
+
+GraphQL API Layer
+
+
+A GraphQL data gateway that federates metrics, billing data, and resource configurations.
+
+
+Supports rich querying and joins between infrastructure and cost entities.
+
+
+AI-Based Budget Forecasting & Optimization
+
+
+Predictive models forecast future resource utilization and spend using time-series analysis and historical telemetry.
+
+
+Comparative analysis engine benchmarks multi-cloud vs on-premise costs with discount and commitment modeling.
+
+
+Recommendation Engine: Suggests right-sizing, reserved instance commitments, and hybrid deployment strategies.
+
+
+DevOps Automation Hooks
+
+
+Integrations with CI/CD pipelines to trigger budget alerts and scaling actions automatically.
+
+
+Webhooks to Slack, email, or incident platforms when anomalies are detected in cost patterns or performance KPIs.
+
+
+Multi-Cloud Benchmarking
+
+
+Side-by-side cost modeling for AWS, Azure, and GCP, factoring in:
+
+
+Instance types, CPU/memory equivalence
+
+
+Network egress costs
+
+
+Storage tiers (EBS, S3, Azure Blob, etc.)
+
+
+Discount programs (RI, Spot, Committed Use)
+
+
+Technical Architecture & Stack
+Core Platform
+Frontend: Next.js (TypeScript) dashboard with Tailwind UI, Recharts/D3 for data visualization.
+
+
+Backend: Node.js (TypeScript) with GraphQL API gateway (Apollo Server).
+
+
+DevOps Metrics:
+
+
+Prometheus for metric collection (CPU, GPU, network, memory, I/O).
+
+
+Grafana for visual dashboards, real-time analytics, and alert rules.
+
+
+Alertmanager for anomaly detection and automated notifications.
+
+
+AI Engine:
+
+
+Cost forecasting models using Python (FastAPI microservices).
+
+
+Time-series forecasting (Prophet, ARIMA, LSTM variants).
+
+
+Comparative analytics with LangChain + LLM for natural-language cost explanations and “what-if” planning.
+
+
+Data Layer: PostgreSQL for structured infra data, Redis for caching, InfluxDB (optional) for high-frequency metrics.
+
+
+Queueing: BullMQ / Celery for async job orchestration (e.g., large-scale forecasts).
+
+
+Infrastructure & Deployment
+Containerized via Docker, orchestrated using Kubernetes (EKS) for scalable multi-service deployment.
+
+
+Hosting: AWS (EKS, S3, CloudFront, RDS, ElastiCache, Lambda for triggers).
+
+
+Monitoring Stack: Prometheus + Grafana + Loki (logs) + Tempo (traces).
+
+
+Security: IAM least privilege, TLS, KMS for secret management, token-based access for GraphQL queries.
+
+
+CI/CD: GitHub Actions + Terraform/CDK pipelines for continuous deployment.
+
+
+Observability: OpenTelemetry instrumentation on all microservices.
+
+
+AI-Powered Budget Intelligence
+Feature
+Description
+Forecasting Engine
+Predicts future cost curves and utilization spikes based on time-series telemetry.
+Comparative Analysis
+Simulates costs across AWS/Azure/GCP + hybrid architectures with real provider pricing APIs.
+Recommendation Engine
+AI models suggest scaling strategies, optimal regions, and instance families for performance vs cost tradeoffs.
+Anomaly Detection
+Identifies abnormal usage or billing spikes, auto-alerts teams, and suggests fixes.
+Natural-Language Reports
+LLM summarization turns cost metrics into business-readable insights (“Your EC2 usage increased 12% due to 3 new GPU nodes”).
+
+Key DevOps Features
+Full observability stack: Metrics, logs, traces unified under one data model.
+
+
+Budget automation hooks: Trigger pipeline or scaling actions when spend thresholds exceed defined budgets.
+
+
+Environment simulation: Run “what-if” analysis for scaling or migrations.
+
+
+Real-time dashboards: Grafana integrated with cost overlays and forecasting visualizations.
+
+
+Prometheus exporters for VMs, Kubernetes, databases, and cloud APIs.
+
+
+Performance & Business Impact
+90% improvement in visibility across infra + finance metrics.
+
+
+Up to 40% cost savings through predictive scaling and reserved instance optimization.
+
+
+Reduced alert fatigue via AI-driven anomaly grouping and relevance scoring.
+
+
+Forecast accuracy within ±8% across 30-day projections.
+
+
+Unified dashboard for engineering, finance, and operations teams.
+
+
+Outcomes
+CostCloud became an AI-assisted DevOps command center for cost intelligence and infrastructure optimization:
+Unified Prometheus/Grafana metrics with real cost data via GraphQL.
+
+
+Added predictive AI for budget forecasting and architectural recommendations.
+
+
+Delivered real-time insights on how infrastructure changes impact cost and how cost decisions affect performance.
+
+
+It transforms DevOps from reactive monitoring to proactive, data-driven financial operations.
+Tech Tags
+DevOps Stack: Prometheus, Grafana, Loki, Tempo, Alertmanager, Kubernetes (EKS), Docker
+Backend: Node.js (TypeScript), GraphQL (Apollo Server), FastAPI (Python microservices), REST, gRPC
+Frontend: Next.js, TypeScript, TailwindCSS, Recharts/D3
+Data: PostgreSQL, Redis, InfluxDB, S3, OpenTelemetry
+AI/ML: Prophet, ARIMA, LSTM, LangChain, GPT-based recommendation models
+Infra: AWS (EKS, RDS, S3, CloudFront, KMS, IAM, CloudWatch), Terraform/CDK, GitHub Actions
+Security: JWT, IAM least privilege, TLS, KMS Encryption, Secret Manager
+Monitoring: Prometheus, Grafana Dashboards, Loki (logs), Tempo (traces), Alertmanager (alerts)
+Summary
+CostCloud redefines DevOps cost management — combining observability, automation, and intelligence into a single platform.
+It is production-ready, AI-integrated, and DevOps-core, bridging infrastructure health and financial forecasting through a unified, data-driven system.
+
+10 - GarbinAI: Blockchain-Enabled Fair-Pay System
+Project Overview Document
+1. Overview
+1.1 Project Introduction
+GarbinAI is a revolutionary blockchain-powered platform that transforms how AI models are deployed, accessed, and monetized. The platform enables AI model creators to deploy their models publicly, making them accessible to users through Spaces (deployment environments). When users utilize these AI models, the platform's integrated smart contract system automatically rewards model owners and all contributors, creating a fair and transparent economy for the entire AI supply chain.
+1.2 Core Concept
+The platform operates on a simple yet powerful principle: deploy once, earn forever. When a person deploys their AI model on GarbinAI, it becomes publicly accessible. However, when the model is deployed on Spaces (the runtime environment), it becomes accessible to end users for actual inference and usage. Every time a user interacts with that model, smart contracts automatically execute payments to the model owner and all contributors based on their contribution weights.
+1.3 Key Components
+Model Deployment Platform: Public repository for AI models integrated with Hugging Face
+Spaces Runtime: Deployment environment where models become accessible and executable
+Usage Tracking System: Monitors and records all model interactions and usage
+Provenance Graph: Immutable record of all contributions and model lineage
+Smart Contract Layer: Blockchain-based automatic revenue distribution
+Payment Gateway: Handles user payments and contributor payouts
+1.4 Target Stakeholders
+Model Owners: AI researchers, developers, and organizations who create and deploy models
+Contributors: Data providers, annotators, curators, trainers, GPU providers, and code contributors
+End Users: Developers, businesses, and individuals who need AI model inference services
+Platform: GarbinAI ecosystem that facilitates fair trade and compensation
+2. Problem
+2.1 Current Challenges in AI Model Distribution
+The AI industry faces significant challenges in how models are distributed, accessed, and monetized. Current platforms allow model creators to deploy their models publicly, but there is no automated mechanism to ensure fair compensation when these models are used commercially or at scale.
+2.2 Unfair Compensation Issues
+Contributor Recognition: People who contribute data, annotations, code, or compute resources to AI models often receive no recognition or compensation when the model is used
+Manual Payment Processes: Model owners must manually track usage and distribute payments, which is time-consuming and error-prone
+Lack of Transparency: There's no clear record of who contributed what and how revenue should be distributed
+Provenance Tracking: It's difficult to track the complete lineage of contributions to a model, making fair distribution impossible
+Trust Issues: Contributors have no guarantee they will be compensated fairly or at all
+2.3 Economic Inefficiencies
+No Incentive for Contribution: Without guaranteed compensation, people are less motivated to contribute quality data, annotations, or code
+Underutilized Resources: Models may be underutilized because creators don't have economic incentives to maintain and improve them
+Fragmented Ecosystem: The AI supply chain is fragmented with no unified system for fair value distribution
+High Transaction Costs: Manual payment processing and verification are expensive and don't scale
+2.4 Technical Limitations
+No Usage Tracking: Current platforms don't automatically track and meter model usage in a verifiable way
+No Automated Payments: There's no system to automatically execute payments when models are used
+License Enforcement: Difficult to enforce licensing terms and ensure proper attribution
+Scalability Issues: Manual processes don't scale to handle thousands of models and millions of usage events
+Core Problem: The AI industry lacks an automated, transparent, and fair system for compensating all contributors when AI models generate value. This creates disincentives for contribution, reduces trust, and prevents the creation of a sustainable economy around AI model development and usage.
+3. Solution
+3.1 Platform Workflow
+GarbinAI solves these problems through an integrated blockchain-enabled platform that automates the entire process from model deployment to revenue distribution.
+Step 1: Model Deployment
+Model creators deploy their AI models on GarbinAI, making them publicly accessible. The platform integrates with Hugging Face for seamless model hosting and management. At this stage, creators can configure metadata, licenses, and contributor information.
+Step 2: Spaces Deployment
+When a model is deployed on Spaces (GarbinAI's runtime environment), it transitions from being a static repository to an active, usable AI service. Spaces provide the execution environment where models can process inference requests from users.
+Step 3: Model Usage
+End users access models through Spaces for inference, training, or other AI tasks. The platform automatically tracks every usage instance, including:
+Number of API calls or inference requests
+Tokens consumed (for language models)
+Compute time and resources used
+User payments for usage
+Step 4: Automatic Reward Distribution
+Smart contracts automatically execute when models are used:
+Usage data is recorded and verified on the blockchain
+Revenue is calculated based on usage metrics and pricing
+Smart contracts automatically distribute rewards to:
+Model owners (primary creators)
+Data providers and collectors
+Data annotators and curators
+Model designers and trainers
+GPU and compute resource providers
+Code contributors and reviewers
+Distribution is based on predefined contribution weights in the provenance graph
+Payments are executed automatically without manual intervention
+3.2 Provenance Tracking System
+GarbinAI maintains an immutable provenance graph that records:
+Complete lineage of every model, dataset, and contribution
+Who contributed what and when
+Contribution weights and percentages
+Version history and dependencies
+License terms and usage rights
+This provenance graph ensures that every contributor is properly attributed and can be compensated fairly based on their actual contribution value.
+3.3 License Enforcement
+Before models can be accessed, the platform enforces licensing requirements:
+License checks before granting access to models
+Attribution requirements automatically tracked
+Commercial use restrictions enforced
+Usage rights compliance verified
+Revenue tracking for licensed usage
+3.4 Smart Contract Automation
+The blockchain-based smart contract system provides:
+Automatic Calculation: Revenue splits calculated based on contribution weights
+Trustless Execution: No need to trust a central authority
+Transparency: All transactions are recorded on-chain and verifiable
+Immutability: Records cannot be altered, ensuring auditability
+Real-time or Batched Settlements: Payments can be executed immediately or batched for efficiency
+3.5 Economic Model
+The platform operates on a usage-based revenue model:
+Users pay for model access (per token, per API call, per compute time, etc.)
+Revenue is automatically split among all contributors based on their weights
+Platform takes a small maintenance fee
+All payments are executed through smart contracts
+Contributors receive payments in stablecoins or platform tokens
+Solution Summary: GarbinAI creates a closed-loop system where models are deployed publicly, made accessible through Spaces, usage is automatically tracked, and smart contracts ensure fair and automatic compensation for all contributors. This eliminates manual processes, builds trust through transparency, and creates sustainable economic incentives for the entire AI supply chain.
+4. Technical Architecture & Stack
+4.1 System Architecture
+GarbinAI is built on a hybrid architecture combining traditional web technologies with blockchain infrastructure:
+Frontend Layer
+Framework: Next.js (React-based)
+Styling: Tailwind CSS
+Authentication: NextAuth.js with Hugging Face OAuth integration
+UI Components: Custom React components with modern design
+Backend Layer
+API Framework: Next.js API Routes
+Database: PostgreSQL for user data, models metadata, and transactions
+External Integration: Hugging Face API for model hosting and management
+File Storage: IPFS/Filecoin for off-chain model and data storage
+Caching: File caching system for optimized performance
+Blockchain Layer
+Primary Chain: BSC (Binance Smart Chain) - recommended for low fees and high throughput
+Alternative Chains: EVM-compatible L2s (Polygon, Arbitrum) for scalability
+Smart Contracts:
+ContributorRegistry: Manages wallet-linked profiles and reputation
+AssetToken: Represents models and datasets as tokens
+ProvenanceGraph: Tracks weighted edges between assets and contributors
+RoyaltySplit: Immutable split tables for revenue distribution
+Escrow/Arbitration: Handles disputes and fund holding
+Payment Method: Stablecoins (USDT, USDC) for contributor payouts
+Spaces Runtime Environment
+Deployment Platform: Custom Spaces runtime for model execution
+Usage Metering: Gateway service that tracks and signs usage receipts
+License Enforcement: Middleware that checks licenses before granting access
+Receipt Generation: Signed usage receipts for blockchain settlement
+4.2 Data Flow Architecture
+Model Deployment Flow
+User authenticates via Hugging Face OAuth
+Model metadata stored in PostgreSQL database
+Model files uploaded to IPFS/Filecoin
+Asset token minted on blockchain with IPFS hash
+Provenance graph updated with contributor information
+Model registered in Spaces runtime
+Model Usage Flow
+User requests access to model via Spaces
+Gateway checks license and authentication
+Model executes inference request
+Usage metering system records usage metrics
+Gateway signs usage receipt
+Receipt queued for blockchain settlement
+Revenue Distribution Flow
+Usage receipts batched and submitted to blockchain
+Smart contract calculates revenue based on usage metrics
+Provenance graph traversed to determine contribution weights
+RoyaltySplit contract distributes payments to all contributors
+Payments executed in stablecoins
+Transaction records stored on-chain for auditability
+
+4.3 Key Technical Components
+Component
+Technology
+Purpose
+Web Application
+Next.js, React, TypeScript
+User interface and API endpoints
+Authentication
+NextAuth.js, Hugging Face OAuth
+User authentication and authorization
+Database
+PostgreSQL
+User data, model metadata, transaction logs
+Model Hosting
+Hugging Face API
+Model repository and versioning
+Storage
+IPFS/Filecoin
+Off-chain model files and datasets
+Blockchain
+BSC/Polygon/Arbitrum
+Smart contracts and transaction execution
+Smart Contracts
+Solidity (EVM)
+Provenance tracking and revenue distribution
+Usage Metering
+Custom Gateway Service
+Usage tracking and receipt generation
+Settlement Engine
+Indexer & Derivation Service
+Batch processing and payment execution
+
+4.4 Security & Compliance
+Authentication: OAuth-based secure authentication with Hugging Face
+Smart Contract Security: Audited contracts with multisig treasury
+Key Management: HSM-backed keys for gateway receipt signing
+Data Protection: PII stored off-chain, only hashes on blockchain
+KYC/AML: Optional KYC at withdrawal thresholds
+Rate Limiting: Abuse detection and rate limits at gateway
+Audit Trails: Immutable on-chain records for all transactions
+4.5 Scalability Considerations
+Batched Settlements: Usage receipts batched to reduce on-chain transactions
+L2 Solutions: Use of Polygon/Arbitrum for lower fees and higher throughput
+Off-Chain Storage: Large model files stored off-chain, only metadata on-chain
+Caching: File caching system for frequently accessed data
+Horizontal Scaling: Stateless API design allows horizontal scaling
+Periodic Settlement: Near-real-time or periodic settlement based on volume
+5. Outcomes
+5.1 For Model Owners
+Monetization: Automatic revenue generation from model usage without manual intervention
+Attraction of Contributors: Fair compensation model attracts quality contributors
+Reputation Building: Transparent provenance records build trust and reputation
+Focus on Innovation: Platform handles payments, allowing focus on model development
+Long-term Value: Earn passive income from models as long as they're used
+Usage Insights: Detailed analytics on how models are being used
+5.2 For Contributors
+Fair Compensation: Automatic payments based on actual contribution value
+Recognition: Immutable records of contributions in provenance graph
+Passive Income: Earn from contributions long after initial work
+Transparency: Verifiable payment records and contribution tracking
+Trust: Smart contracts ensure payments without relying on central authority
+Multiple Revenue Streams: Can contribute to multiple models and earn from all
+5.3 For End Users
+Access to Quality Models: Platform attracts high-quality models due to fair compensation
+Transparent Licensing: Clear understanding of usage rights and terms
+Supporting Creators: Using models directly supports model creators and contributors
+Simple Experience: Web2-like user experience with Web3-powered backend
+Reliable Service: Economic incentives ensure models are maintained and improved
+Verified Models: Provenance tracking ensures model quality and authenticity
+5.4 For the AI Ecosystem
+Sustainable Economy: Creates sustainable economic model for open-source AI
+Incentivized Collaboration: Fair compensation encourages collaboration and contribution
+Quality Improvement: Economic incentives lead to better models and datasets
+Trust Building: Blockchain transparency builds trust across the ecosystem
+Innovation Acceleration: Fair compensation accelerates AI innovation
+Supply Chain Fairness: Ensures fair compensation throughout the entire AI supply chain
+5.5 Platform Metrics & Success Indicators
+Model Deployment: Number of models deployed and active on platform
+Usage Volume: Total usage events and revenue generated
+Contributor Participation: Number of active contributors and contributions
+Revenue Distribution: Total payments distributed to contributors
+User Growth: Number of end users accessing models
+Platform Trust: User retention and contributor satisfaction metrics
+5.6 Economic Impact
+New Revenue Streams: Creates new income opportunities for AI creators and contributors
+Market Efficiency: Automated processes reduce transaction costs and increase efficiency
+Value Distribution: Ensures value is distributed fairly across the supply chain
+Market Growth: Incentivizes model creation and usage, growing the overall market
+Reduced Barriers: Lower barriers to entry for model creators and contributors
+Key Outcome: GarbinAI creates a win-win-win scenario where model owners monetize their work, contributors are fairly compensated, end users get quality models, and the entire AI ecosystem benefits from a sustainable, transparent, and fair economic model.
+6. Summary
+GarbinAI represents a paradigm shift in how AI models are deployed, accessed, and monetized. The platform addresses critical problems in the current AI ecosystem by providing an automated, transparent, and fair system for compensating all contributors when AI models generate value.
+The core innovation lies in combining public model deployment with blockchain-based automatic revenue distribution. When a person deploys their AI model on GarbinAI, it becomes publicly accessible. When deployed on Spaces, it becomes usable by end users. Every usage event triggers smart contracts that automatically distribute rewards to model owners and all contributors based on their contribution weights in the provenance graph.
+The solution eliminates manual payment processes, builds trust through blockchain transparency, and creates sustainable economic incentives for the entire AI supply chain. The platform's technical architecture leverages Next.js for the web application, PostgreSQL for data management, Hugging Face for model hosting, and blockchain smart contracts for automatic revenue distribution.
+The outcomes benefit all stakeholders: model owners can monetize their work automatically, contributors receive fair compensation, end users get access to quality models, and the entire AI ecosystem benefits from a sustainable and transparent economic model. The platform creates a closed-loop system where provenance is captured at source, licensing is enforced at access, and revenue is automatically shared whenever value is realized.
+Built on principles of fairness and justice, GarbinAI ensures that "weight is established in justice" and contributors receive their due. The platform's integration of traditional web technologies with blockchain infrastructure creates a seamless user experience while maintaining the transparency, immutability, and trustlessness that blockchain provides.
+In conclusion, GarbinAI transforms the AI model economy by creating a system where deployment leads to automatic monetization, usage triggers fair compensation, and all contributors are recognized and rewarded. This technical innovation, combined with ethical principles of fairness and transparency, positions GarbinAI as a leader in the next generation of AI platforms, creating a sustainable and equitable ecosystem for AI development and usage.
+
+11- FM10x — Intelligent Building & Facility Management System (IoT-Enabled)
+Overview
+FM10x is a fully integrated Building and Facility Management System (BMS) designed and developed from scratch to unify operations, assets, IoT control, and workforce management within a single intelligent platform.
+It combines IoT automation, asset & inventory tracking, service request workflows, and enterprise-grade user management across multi-organization environments. From HVAC sensors and lighting systems to maintenance requests and role-based dashboards — everything operates under one high-tech, cloud-native ecosystem.
+The system was architected for enterprise scalability, real-time device communication, and secure multi-tenant operations, powered by modern DevOps stacks and hosted on AWS for high availability and performance.
+Problem
+Large facilities and property management teams often rely on fragmented systems:
+Separate apps for asset tracking, maintenance requests, and IoT control.
+
+
+Manual coordination between departments (technical, maintenance, admin).
+
+
+Lack of real-time control or monitoring for connected building devices.
+
+
+Poor scalability for multi-organization or multi-building operations.
+
+
+These silos lead to inefficiency, data duplication, and inconsistent access control.
+FM10x was built to solve this fragmentation by merging IoT, asset, and operations management into one intelligent platform.
+Solution
+FM10x delivers an all-in-one digital twin for facilities — uniting device control, asset visibility, workflows, and role-based operations.
+Core Functional Areas
+IoT Device Management
+
+
+Connect, monitor, and control building devices (HVAC, lighting, power systems, environmental sensors).
+
+
+Real-time telemetry via MQTT and WebSocket protocols.
+
+
+Automated rule engine for triggers (e.g., “If temperature > 30°C → enable cooling zone 2”).
+
+
+Asset & Inventory Management
+
+
+Manage physical and digital assets across multiple buildings.
+
+
+Lifecycle tracking: acquisition → maintenance → retirement.
+
+
+QR/Barcode scanning for equipment and consumables.
+
+
+Service Requests & Work Orders
+
+
+Create and manage maintenance requests with status tracking.
+
+
+Assign tasks to technicians or vendor teams.
+
+
+SLA monitoring and automated escalation policies.
+
+
+User & Role Management
+
+
+Fine-grained permissions: admins, technicians, supervisors, organization owners.
+
+
+Role-based dashboards for each persona.
+
+
+Supports multi-organization setup: one platform, multiple companies, isolated access.
+
+
+Subscription & Billing Modules
+
+
+Multi-tier subscription plans (per building, per organization).
+
+
+Auto-billing integration and plan management for SaaS model.
+
+
+Analytics & Reporting
+
+
+Energy consumption dashboards.
+
+
+Predictive maintenance analytics using AI models on IoT data.
+
+
+Occupancy and environmental reports for optimization.
+
+
+Technical Architecture & Stack
+Core Stack
+Frontend: Next.js (TypeScript), TailwindCSS, React Query, shadcn/ui.
+
+
+Backend: Node.js (TypeScript), NestJS (modular monolith) + REST + GraphQL APIs.
+
+
+IoT Gateway: MQTT broker (EMQX/Mosquitto) + WebSocket layer for real-time device communication.
+
+
+Database: PostgreSQL (AWS Aurora) for structured data; Redis (ElastiCache) for caching and session storage.
+
+
+File Storage: Amazon S3 (for documents, images, invoices, etc.).
+
+
+Job & Queue Management: BullMQ (Redis-backed) for async processing and scheduling.
+
+
+Authentication: AWS Cognito + JWT for SSO and user federation.
+
+
+DevOps & Infrastructure
+Cloud Platform: AWS (ECS Fargate, EC2, Lambda, RDS Aurora, S3, CloudFront).
+
+
+Infrastructure as Code: Terraform + AWS CDK.
+
+
+CI/CD Pipeline: GitHub Actions for build/test/deploy.
+
+
+Monitoring & Observability:
+
+
+Prometheus for metrics (API latency, MQTT message throughput).
+
+
+Grafana for real-time dashboards and system health.
+
+
+Loki + Tempo for centralized logging and tracing.
+
+
+Security:
+
+
+IAM least privilege, TLS 1.3, KMS encryption.
+
+
+Secure multi-tenant data isolation per organization.
+
+
+WAF and GuardDuty integration for threat detection.
+
+
+Scalability & Performance
+Horizontal scaling for API and MQTT brokers.
+
+
+Load-balanced microservices with auto-scaling based on active sessions.
+
+
+Optimized Redis caching for high-throughput IoT event streams.
+
+
+Database sharding for multi-tenant organizations.
+AI & Automation Components
+Predictive Maintenance AI: Uses historical device telemetry to forecast failures and maintenance needs.
+
+
+Anomaly Detection: ML models detect abnormal power or temperature spikes.
+
+
+Intelligent Recommendations: Suggests maintenance schedules or cost-saving IoT settings.
+
+
+Data Insights: AI-generated summaries of energy consumption and system performance.
+
+
+Key Features Summary
+Category
+Capabilities
+IoT Management
+Real-time device control, MQTT, WebSocket, rule engine
+Asset & Inventory
+Lifecycle tracking, QR codes, analytics
+Service Requests
+Work orders, ticketing, SLAs, assignment flows
+Multi-Organization
+Separate tenants, shared infra, permission controls
+Subscription System
+Tiered plans, billing, company-level settings
+User Management
+Role-based access (admin, tech, supervisor)
+Analytics
+IoT metrics, energy dashboards, maintenance KPIs
+AI/Automation
+Predictive alerts, performance recommendations
+
+
+Outcomes & Impact
+Delivered a single unified platform replacing multiple tools for facilities and building management.
+
+
+Reduced operational overhead by 40–60% through IoT automation and centralized workflows.
+
+
+Enabled organizations to manage multiple sites and thousands of devices with real-time control and visibility.
+
+
+Provided enterprise-grade reliability and 99.9% uptime under AWS infrastructure.
+
+
+Allowed predictive maintenance and proactive cost control with AI analytics.
+
+
+Tech Tags
+Frontend: Next.js, TypeScript, React, TailwindCSS, shadcn/ui, React Query
+Backend: Node.js, TypeScript, NestJS, REST, GraphQL, BullMQ, Redis, PostgreSQL
+IoT & Real-Time: MQTT, WebSocket, EMQX, IoT Rule Engine, Device Telemetry Processing
+AI/ML: Predictive Maintenance, Anomaly Detection, Recommendation Engine (Python microservices)
+DevOps/Infra: AWS (ECS Fargate, EC2, RDS Aurora, S3, CloudFront, Lambda, CloudWatch), Terraform, CDK, GitHub Actions
+Monitoring: Prometheus, Grafana, Loki, Tempo, Alertmanager
+Security: IAM, Cognito, JWT, TLS 1.3, KMS Encryption, WAF
+Architecture: Multi-tenant SaaS, Modular Monolith + Microservices, Horizontal Scaling, Auto-Healing
+Summary
+FM10x stands as a complete, cloud-native Building Management and IoT Control System — engineered for real-time operations, predictive intelligence, and multi-tenant enterprise scalability.
+It unifies devices, assets, teams, and organizations under one intelligent platform — integrating the latest in DevOps, AI, IoT, and cloud infrastructure to deliver a smooth, automated, and production-ready experience.
+
+12- Storely — AI-Powered Store Management & Automation Platform
+Overview
+We built Storely as an intelligent store operations and automation platform — a unified workspace where merchants, managers, and teams can connect apps, manage workflows, and communicate with customers — all powered by AI-driven insights and automation.
+Storely merges the intelligence of conversational AI, the precision of data orchestration, and the flexibility of integrations, transforming how online stores handle daily operations.
+ It enables businesses to automate repetitive tasks, monitor events across platforms, and make decisions directly through natural conversation.
+Problem
+Modern e-commerce teams are overwhelmed by fragmented workflows:
+ Shopify handles sales, Slack manages communication, and CRMs manage customers — but these systems rarely speak the same language.
+Manual syncing between them leads to missed updates, delayed responses, and inconsistent customer experiences.
+We identified the gap: teams needed an intelligent bridge between their tools — not another dashboard, but an AI-native system that could listen, respond, and act across all integrations in real-time.
+Solution
+Storely was built to unify operations across e-commerce and communication tools through AI-powered automation and monitoring.
+ The platform connects Shopify, Slack, and other systems into one seamless ecosystem where AI coordinates actions, not just observes them.
+Storely enables users to:
+Automate store events — respond to new orders, refunds, or customer messages using event-based workflows.
+
+
+Manage conversations in Slack — process customer messages, send updates, and trigger workflows automatically.
+
+
+Analyze performance metrics — view sales, traffic, and product trends directly inside the dashboard.
+
+
+Collaborate intelligently — through embedded AI assistants trained for marketing, operations, and analytics.
+
+
+With Storely, AI becomes part of the team — monitoring, responding, and acting instantly across all connected apps.
+Technical Architecture & Stack
+Frontend
+Framework: Next.js (App Router) + TypeScript
+
+
+UI Layer: TailwindCSS + Shadcn/UI for modular components
+
+
+State Management: Zustand + React Query for data fetching
+
+
+Dashboard Features: Real-time widgets for Slack, Shopify, and performance tracking
+
+
+AI Layer: LangChain client for multi-agent orchestration between assistants
+
+
+Backend
+Server Runtime: Node.js (TypeScript)
+
+
+Database: Supabase (PostgreSQL) for structured storage
+
+
+Workers: BullMQ Workers for background jobs (Slack, Shopify, Webhooks)
+
+
+AI Integration: OpenAI GPT models + custom agent logic for contextual processing
+
+
+Authentication: Supabase Auth (JWT-based sessions)
+
+
+File Storage: Supabase Buckets (for media and event logs)
+
+
+Payments: Stripe API (subscription and usage tiers)
+
+
+Infrastructure
+Hosting: Vercel (frontend) + Supabase (backend + APIs)
+
+
+Monitoring: Pino structured logging + Logtail and Sentry integration
+
+
+Queue Management: Redis + Bull Board for worker monitoring
+
+
+CI/CD: GitHub Actions for automatic deployment and testing
+
+
+AI & Product Intelligence
+Conversational Intelligence: AI Assistants for Slack and Store Management that process natural commands and perform actions (e.g., “Show this week’s sales”).
+
+
+Webhook Brain: Event intelligence system that identifies duplicate or failed webhook events to maintain idempotency.
+
+
+Multi-Agent Coordination: Specialized AI roles (OpsBot, MarketBot, SupportBot) collaborating to handle tasks simultaneously.
+
+
+Contextual Memory: LangChain-powered memory layer that allows assistants to remember prior conversations or store events.
+
+
+Automated Insights: Weekly performance summaries, trend forecasts, and anomaly detection powered by fine-tuned AI models.
+
+
+Security-Aware AI: Token verification, rate limits, and permission-based execution for each assistant.
+
+
+Outcome & Impact
+Storely redefines store automation and communication by merging human conversation with system intelligence.
+ It eliminates the barriers between sales, support, and operations — creating an ecosystem that runs itself intelligently.
+We achieved:
+70% faster response time for store events through automated AI workflows.
+
+
+Consistent cross-platform communication between Slack, Shopify, and internal dashboards.
+
+
+Error-free webhook monitoring through idempotent event processing.
+
+
+Real-time AI assistance for managers and teams across all store operations.
+
+
+Storely represents our vision at Upvave
+ AI systems that collaborate, automate, and evolve alongside teams, not just support them.
+
 
 
 🌟 Our Specialties
