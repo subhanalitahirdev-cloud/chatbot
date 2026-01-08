@@ -5,6 +5,7 @@ import animationData from '../public/lottie/Bot2.json';
 import loaderData from '../public/lottie/Loader.json';
 import { IoMdSend } from "react-icons/io";
 import Bubble from './components/Bubble';
+import { FaEdit } from "react-icons/fa";
 import PromptSuggestionRow from './components/PromptSuggestionRow';
 
 interface Message {
@@ -102,6 +103,11 @@ const Home = () => {
     setInput('');
   };
 
+  const handleNewChat = () => {
+    setMessages([]);
+    setInput('');
+  };
+
 
 
   return (
@@ -116,6 +122,22 @@ const Home = () => {
             <h1>UpvaveGPT</h1>
             <p>Your AI Assistant</p>
           </div>
+          {hasInitialMessages && (
+            <button
+              onClick={handleNewChat}
+              className='new-chat-button'
+              title='Start a new chat'
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '24px',
+                marginLeft: 'auto',
+              }}
+            >
+              <FaEdit />
+            </button>
+          )}
         </div>
 
         {/* Messages Area */}
