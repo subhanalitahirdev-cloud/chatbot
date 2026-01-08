@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Lottie from 'lottie-react';
 import animationData from '../public/lottie/Bot2.json';
 import loaderData from '../public/lottie/Loader.json';
+import ConfettieData from '../public/lottie/Confettie.json';
 import { IoMdSend } from "react-icons/io";
 import Bubble from './components/Bubble';
 import { FaEdit } from "react-icons/fa";
@@ -17,6 +18,7 @@ const Home = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasInitialMessages = messages.length > 0;
@@ -82,6 +84,8 @@ const Home = () => {
       setMessages((prev) => [...prev, { role: 'assistant', content: 'Sorry, there was an error processing your request.' }]);
     } finally {
       setIsLoading(false);
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 3000);
     }
   };
 
@@ -162,6 +166,11 @@ const Home = () => {
                   <div className='loader-animation'>
                     <Lottie animationData={loaderData} loop={true} style={{ width: '32px', height: '32px' }} />
                   </div>
+                </div>
+              )}
+              {showConfetti && (
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none' }}>
+                  <Lottie animationData={ConfettieData} loop={false} style={{ width: '100%', height: '100%' }} />
                 </div>
               )}
               <div ref={messagesEndRef} />
