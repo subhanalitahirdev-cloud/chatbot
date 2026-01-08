@@ -366,6 +366,125 @@ A modular architecture that enables plug-ins for future extensions like AI mindm
 
 PreachPro represents our philosophy at Upvave — tools that think, not just function.
 
+4- Composit — AI Artboard Generation & Creative Collaboration Platform
+composit.upvave.app
+Overview
+Composit (also known as CompositGPT) is an AI-powered artboard and creative collaboration tool built to help artists, designers, and creative teams generate, modify, and organize visuals through intelligent automation.
+Hosted on AWS, Composit leverages AWS Bedrock for LLM orchestration, combining large-scale language understanding with visual creativity. It redefines digital artistry — enabling users to create, customize, and iterate on artboards through AI-generated concepts, styling intelligence, and real-time collaboration.
+It’s not just a design tool — it’s a creative partner that understands prompts, context, and visual intent.
+Problem
+Traditional design tools like Figma, Photoshop, or Canva depend heavily on manual iteration and precision for every creative change.
+For fast-moving creators — marketers, designers, storytellers — this slows down ideation and consistency.
+We identified an opportunity to build a generative art platform that understands creative intent and produces visual compositions autonomously — merging AI, design systems, and collaborative intelligence.
+Solution
+Composit enables users to:
+Generate unique artboards from text prompts and visual context.
+
+
+Customize layouts, typography, and palettes through natural language commands.
+
+
+Collaborate and organize assets in shared collections (artist portfolios, brand boards).
+
+
+Store, remix, and refine creations through context-aware AI suggestions.
+
+
+The system merges text-to-image generation, customization layers, and semantic asset storage, allowing for fluid creative iteration.
+AI & Creative Intelligence
+Prompt-aware generation: The AI interprets complex creative briefs (“a minimal tech dashboard in blue hues”) to build contextually accurate compositions.
+
+
+Stylistic memory: Learns from user preferences (palette, layout, tone) to deliver consistent and evolving results.
+
+
+Composable generation: Supports blending of prior artboards, cross-style synthesis, and remixing.
+
+
+Collaborative AI: Multiple users can generate and edit simultaneously within a workspace.
+
+
+Artists Collection AI Module:
+
+
+Identifies original contributors, giving automated credit attribution and tracking creative lineage.
+
+
+Curates artist collections with metadata linking, ensuring ethical AI generation and acknowledgment.
+
+
+Technical Architecture
+Frontend
+Framework: Next.js (TypeScript) + TailwindCSS
+
+
+UI: Framer Motion animations, Shadcn/UI components
+
+
+Canvas Editor: Custom React-based drag-and-drop layer system
+
+
+State: Zustand for real-time sync
+
+
+Collaboration: Supabase Realtime API
+
+
+Backend
+Core Stack: Node.js (TypeScript) + Supabase
+
+
+Database: PostgreSQL for user, project, and asset indexing
+
+
+AI Engine:
+
+
+AWS Bedrock for LLM orchestration (prompt understanding, intent modeling)
+
+
+Stability API + OpenAI for text-to-image generation
+
+
+LangChain for contextual memory and style fine-tuning
+
+
+Storage: Supabase Buckets
+
+
+Auth: Supabase Auth + JWT
+
+
+Monitoring: Logtail + Sentry
+
+
+Infrastructure
+Hosting: Vercel (frontend) + Supabase (serverless backend)
+
+
+CI/CD: GitHub Actions + Supabase migrations
+
+
+AI Processing: Deployed on AWS Lambda + AWS Bedrock API
+
+
+Credits & Artist Recognition: Managed through Bedrock-powered metadata tagging in the Artists Collection AI module
+
+
+Outcome & Impact
+Composit transforms static design workflows into an AI-assisted creative dialogue.
+Key Achievements
+70% faster design ideation and iteration cycles.
+
+
+Consistent branding and stylistic coherence across AI-generated visuals.
+
+
+Scalable, real-time collaboration built on a serverless stack.
+
+
+Artist attribution automation via AI-driven metadata analysis.
+
 
 
 🌟 Our Specialties
