@@ -2,14 +2,14 @@ Upvave
 Mastering the Web, Solving the Future
 Technology Location Founded Team Size
 
-🚀 About Us
+About Us
 At Upvave, we're on a mission to Master the Web Solutions. As a dynamic startup based in Lahore, we specialize in providing cutting-edge web solutions that help businesses and individuals thrive in the digital world. While our team has traditionally operated remotely, we are now transitioning to on-site operations, fostering a collaborative environment that drives innovation.
 
 We believe in the power of continuous learning and creativity, encouraging our team to explore, experiment, and stay at the forefront of technology. At Upvave, we're not just focused on developing high-quality web solutions, but also on creating a positive impact on the web and the environment. By bringing together talented individuals from diverse backgrounds, we aim to craft solutions that not only meet business needs but also contribute to a better, more sustainable digital ecosystem.
 
 "Mastering the web, solving the future. Let us handle the tasks while you focus on what matters. Unlock success with our dedicated team."
 
-💼 What We Do
+ What We Do
 We create cutting-edge web applications and digital experiences that drive business growth through:
 
 Expert Web Development - Mobile apps and digital strategy
@@ -17,7 +17,7 @@ Full-Stack Solutions - End-to-end development services
 AI & Machine Learning - Innovative tech solutions
 Cloud & DevOps - AWS infrastructure and deployment
 Custom Web Solutions - Tailored to your business needs
-🛠️ Our Tech Stack
+ Our Tech Stack
 Frontend
 React Next.js JavaScript
 
@@ -43,19 +43,19 @@ Solution:
 We designed Hairsmailer to function as a conversational marketing brain. Users can talk to the platform — by text or voice — and say things like:
 “Create a 5-day re-engagement campaign for inactive leads who opened at least one email in the last 30 days.”
 Within seconds, Hairsmailer uses LangChain, LangGraph, and custom LLM pipelines deployed on AWS Bedrock to:
-1- Understand intent.
+ Understand intent.
 
 
-2- Fetch customer data.
+Fetch customer data.
 
 
-3- Generate full email sequences, subject lines, and content variations.
+Generate full email sequences, subject lines, and content variations.
 
 
-4- Schedule, track, and A/B test performance.
+Schedule, track, and A/B test performance.
 
 
-5- Automate CRM actions — tagging, scoring, and lead assignment.
+ Automate CRM actions — tagging, scoring, and lead assignment.
 
 
 The AI layer dynamically interacts with the CRM core, updating pipelines, assigning follow-ups, and suggesting next actions — effectively merging marketing intelligence with operational automation.
@@ -1905,40 +1905,40 @@ Storely represents our vision at Upvave
 
 
 
-🌟 Our Specialties
-🌐 Website Development
-💻 Full-Stack Development
-⚛️ ReactJs & NextJs
-🟢 NodeJs Development
-🤖 Machine Learning & AI Development
-📊 Data Science
-🕷️ Web Crawlers
-☁️ AWS & Cloud Solutions
-🔧 DevOps & Infrastructure
-✨ Custom Web Solutions
-💡 Why Choose Upvave?
-✅ Flexible Working Hours - Work-life balance matters
-🏠 Remote Work Options - Work from anywhere
-🌍 Remote-First Culture - Virtual collaboration at its best
-📚 Continuous Learning - Grow with us
-🌱 Sustainable Solutions - Building a better digital ecosystem
-🤝 Collaborative Environment - Diverse, talented team
-🏢 Work Culture
+ Our Specialties
+ Website Development
+ Full-Stack Development
+ ReactJs & NextJs
+ NodeJs Development
+ Machine Learning & AI Development
+ Data Science
+ Web Crawlers
+ AWS & Cloud Solutions
+ DevOps & Infrastructure
+ Custom Web Solutions
+ Why Choose Upvave?
+ Flexible Working Hours - Work-life balance matters
+ Remote Work Options - Work from anywhere
+ Remote-First Culture - Virtual collaboration at its best
+ Continuous Learning - Grow with us
+ Sustainable Solutions - Building a better digital ecosystem
+ Collaborative Environment - Diverse, talented team
+ Work Culture
 Remote Workplace
 Eligible employees can work remotely with manager approval
 Flexible working hours with core availability requirements
 Virtual assistants work flexible hours during core working hours
 Strong emphasis on communication and collaboration
 Featured Benefits
-🕐 Flexible Working Hours
-🌐 Remote Working Options
-🏠 Work From Home (WFH) Options
-📫 Get In Touch
+ Flexible Working Hours
+Remote Working Options
+Work From Home (WFH) Options
+ Get In Touch
 Website Phone LinkedIn
 
 Hours: Open 24 hours
 
-🚀 Join Our Team
+Join Our Team
 At Upvave, your passion for learning and making the web a better place will thrive. We're always looking for talented individuals who share our vision of mastering the web and solving the future.
 
 Explore career opportunities: Careers - Join Our Team

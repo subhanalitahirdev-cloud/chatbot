@@ -1,25 +1,12 @@
-import { DataAPIClient } from "@datastax/astra-db-ts";
 import { OpenAI } from "openai";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-const {
-  ASTRA_DB_API_ENDPOINT,
-  ASTRA_DB_API_KEY,
-  ASTRA_DB_COLLECTION,
-  ASTRA_DB_NAMESPACE,
-  OPENAI_API_KEY,
-} = process.env;
+const { OPENAI_API_KEY } = process.env;
 
 const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
-
-const client = new DataAPIClient(ASTRA_DB_API_KEY || "");
-const db = client.db(
-  typeof ASTRA_DB_API_ENDPOINT === "string" ? ASTRA_DB_API_ENDPOINT : "",
-  { keyspace: typeof ASTRA_DB_NAMESPACE === "string" ? ASTRA_DB_NAMESPACE : "" }
-);
 
 export async function POST(req: Request) {
   try {
@@ -61,7 +48,17 @@ INSTRUCTIONS:
 3. Always connect technology questions back to Upvave's services and capabilities.
 4. If a user asks something NOT covered in the company information, respond with: "I wish I could help! I don't have that information, but I can assist with questions about Upvave and our services."
 5. Be helpful, professional, and highlight Upvave's specialties and benefits.
-6. Do NOT make up information or features that are not mentioned in the company document.`,
+6. Do NOT make up information or features that are not mentioned in the company document.
+
+FORMATTING INSTRUCTIONS:
+- Use markdown formatting for all responses
+- Use bullet points (•) for lists of items
+- Use bold (**text**) for important points and headings
+- Use numbered lists (1. 2. 3.) for step-by-step information
+- Use line breaks between sections for better readability
+- Use emojis where appropriate to make the response visually appealing
+- Keep paragraphs short and easy to read
+- Always structure your response with clear sections and proper spacing`,
     };
 
     // Format messages for OpenAI API
