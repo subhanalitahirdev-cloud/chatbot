@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface BubbleProps {
   message: {
@@ -10,108 +12,35 @@ interface BubbleProps {
 const Bubble: React.FC<BubbleProps> = ({ message }) => {
   const isUser = message.role === 'user';
   
-  // Function to parse markdown and return React elements
-  const parseMarkdown = (text: string) => {
-    const parts: React.ReactNode[] = [];
-    const lines = text.split('\n');
-    
-    let listItems: string[] = [];
-    let inList = false;
-    
-    lines.forEach((line, lineIdx) => {
-      const trimmedLine = line.trim();
-      
-      // Handle bullet points and numbered lists
-      if (trimmedLine.startsWith('•') || /^\d+\.\s/.test(trimmedLine)) {
-        if (!inList) {
-          inList = true;
-          listItems = [];
-        }
-        listItems.push(trimmedLine.replace(/^[•\d+\.\s]+/, '').trim());
-        return;
-      }
-      
-      // End list if we hit a non-list line
-      if (inList && trimmedLine && !trimmedLine.startsWith('•') && !/^\d+\.\s/.test(trimmedLine)) {
-        parts.push(
-          <ul key={`list-${lineIdx}`} style={{ marginLeft: '20px', margin: '10px 0' }}>
-            {listItems.map((item, idx) => (
-              <li key={idx}>{parseInlinMarkdown(item)}</li>
-            ))}
-          </ul>
-        );
-        inList = false;
-        listItems = [];
-      }
-      
-      // Headers
-      if (trimmedLine.startsWith('#')) {
-        const headerText = trimmedLine.replace(/#/g, '').trim();
-        parts.push(
-          <h3 key={lineIdx} style={{ margin: '15px 0 5px 0', fontWeight: 'bold' }}>
-            {parseInlinMarkdown(headerText)}
-          </h3>
-        );
-        return;
-      }
-      
-      // Regular paragraphs
-      if (trimmedLine) {
-        parts.push(
-          <p key={lineIdx} style={{ margin: '8px 0' }}>
-            {parseInlinMarkdown(trimmedLine)}
-          </p>
-        );
-      } else if (parts.length > 0) {
-        parts.push(<div key={lineIdx} style={{ height: '5px' }} />);
-      }
-    });
-    
-    // Handle remaining list items
-    if (inList && listItems.length > 0) {
-      parts.push(
-        <ul key="final-list" style={{ marginLeft: '20px', margin: '10px 0' }}>
-          {listItems.map((item, idx) => (
-            <li key={idx}>{parseInlinMarkdown(item)}</li>
-          ))}
-        </ul>
-      );
-    }
-    
-    return parts;
-  };
-  
-  // Parse inline markdown like bold text
-  const parseInlinMarkdown = (text: string) => {
-    const parts: React.ReactNode[] = [];
-    let lastIndex = 0;
-    const boldRegex = /\*\*(.*?)\*\*/g;
-    let match;
-    
-    while ((match = boldRegex.exec(text)) !== null) {
-      // Add text before the match
-      if (match.index > lastIndex) {
-        parts.push(text.substring(lastIndex, match.index));
-      }
-      // Add bold text
-      parts.push(
-        <strong key={`bold-${match.index}`}>{match[1]}</strong>
-      );
-      lastIndex = boldRegex.lastIndex;
-    }
-    
-    // Add remaining text
-    if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
-    }
-    
-    return parts.length > 0 ? parts : text;
-  };
-  
   return (
     <div className={`chatbot-message ${isUser ? 'user-message' : 'bot-message'}`}>
       <div className='message-content'>
-        {isUser ? message.content : parseMarkdown(message.content)}
+        {isUser ? (
+          message.content
+        ) : (
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            components={{
+              p: ({ node, ...props }) => <p style={{ margin: '8px 0' }} {...props} />,
+              ul: ({ node, ...props }) => <ul style={{ marginLeft: '20px', margin: '10px 0' }} {...props} />,
+              ol: ({ node, ...props }) => <ol style={{ marginLeft: '20px', margin: '10px 0' }} {...props} />,
+              li: ({ node, ...props }) => <li style={{ margin: '5px 0' }} {...props} />,
+              h1: ({ node, ...props }) => <h2 style={{ margin: '15px 0 10px 0', fontWeight: 'bold' }} {...props} />,
+              h2: ({ node, ...props }) => <h3 style={{ margin: '15px 0 10px 0', fontWeight: 'bold' }} {...props} />,
+              h3: ({ node, ...props }) => <h4 style={{ margin: '12px 0 8px 0', fontWeight: 'bold' }} {...props} />,
+              strong: ({ node, ...props }) => <strong style={{ fontWeight: 'bold' }} {...props} />,
+              code: (props) => 
+                props.inline ? (
+                  <code style={{ backgroundColor: '#f0f0f0', padding: '2px 6px', borderRadius: '3px', fontSize: '0.9em' }} {...props} />
+                ) : (
+                  <code style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', display: 'block', overflow: 'auto', margin: '8px 0' }} {...props} />
+                ),
+              blockquote: ({ node, ...props }) => <blockquote style={{ borderLeft: '4px solid #ccc', paddingLeft: '10px', marginLeft: '0', color: '#666' }} {...props} />,
+            }}
+          >
+            {message.content}
+          </ReactMarkdown>
+        )}
       </div>
     </div>
   );
