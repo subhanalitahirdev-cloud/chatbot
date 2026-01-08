@@ -1,5 +1,7 @@
 import { DataAPIClient } from "@datastax/astra-db-ts";
 import { OpenAI } from "openai";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 const {
   ASTRA_DB_API_ENDPOINT,
@@ -38,48 +40,28 @@ export async function POST(req: Request) {
     const latestMessage = userMessages[userMessages.length - 1].content;
     let docContext = "";
 
-    // Get embedding for semantic search
+    // Read context from llm.txt file
     try {
-      const embedding = await openai.embeddings.create({
-        model: "text-embedding-3-small",
-        input: latestMessage,
-        encoding_format: "float",
-      });
-
-      // Fetch context from vector database
-      try {
-        const collection = await db.collection(
-          ASTRA_DB_COLLECTION || "upvavegpt"
-        );
-        const cursor = collection.find(
-          {},
-          {
-            sort: {
-              $vector: embedding.data[0].embedding,
-            },
-            limit: 10,
-          }
-        );
-
-        const documents = await cursor.toArray();
-        const docsMap = documents?.map(
-          (doc: Record<string, unknown>) => (doc as Record<string, string>).text
-        );
-        docContext = JSON.stringify(docsMap);
-      } catch (err) {
-        console.log("Error fetching from database:", err);
-        docContext = "";
-      }
-    } catch (embErr) {
-      console.log("Error creating embedding:", embErr);
+      const llmFilePath = join(process.cwd(), "llm.txt");
+      docContext = readFileSync(llmFilePath, "utf-8");
+    } catch (fileErr) {
+      console.log("Error reading llm.txt file:", fileErr);
       docContext = "";
     }
 
     const systemPrompt = {
       role: "system" as const,
-      content: `You are UpvaveGPT, an AI assistant designed to provide information about Upvave, a web development company. Use the following context to answer the user's question:\n\n${
-        docContext || "No context available"
-      }\n\nIf the context does not contain the answer, respond with 'I wish I could help! I don’t have that information, but I can assist with questions about Upvave.' Do not make up answers.`,
+      content: `You are UpvaveGPT, an AI assistant designed to provide information about Upvave, a web development company. Use ONLY the following company information to answer questions:
+
+${docContext || "No context available"}
+
+INSTRUCTIONS:
+1. Answer questions ONLY based on the information provided above.
+2. For technology-related questions (NextJS, React, Node.js, etc.), provide contextual answers about how Upvave can help with those technologies. For example, if asked about NextJS, respond like: "If you want to build a full-stack website with NextJS, Upvave can do this for you. We create amazing websites with NextJS and also add animations using Framer Motion or GSAP."
+3. Always connect technology questions back to Upvave's services and capabilities.
+4. If a user asks something NOT covered in the company information, respond with: "I wish I could help! I don't have that information, but I can assist with questions about Upvave and our services."
+5. Be helpful, professional, and highlight Upvave's specialties and benefits.
+6. Do NOT make up information or features that are not mentioned in the company document.`,
     };
 
     // Format messages for OpenAI API
