@@ -1,50 +1,44 @@
-import { OpenAI } from "openai";
+import { GoogleGenAI } from "@google/genai";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-const { OPENAI_API_KEY } = process.env;
-
-const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY,
-});
+const apiKey = process.env.GOOGLE_API_KEY;
 
 export async function POST(req: Request) {
   try {
+    if (!apiKey) {
+      console.error("GOOGLE_API_KEY is missing");
+      return new Response(
+        JSON.stringify({ error: "Configuration Error: API Key missing" }),
+        { status: 500, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const { messages } = await req.json();
 
-    if (!messages || messages.length === 0) {
-      return new Response("No messages provided", { status: 400 });
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return new Response(JSON.stringify({ error: "No messages provided" }), { 
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
-    // Get the latest user message
-    const userMessages = messages.filter(
-      (msg: { role: string; content: string }) => msg.role === "user"
-    );
-    if (userMessages.length === 0) {
-      return new Response("No user message found", { status: 400 });
-    }
-
-    const latestMessage = userMessages[userMessages.length - 1].content;
+    // Read context from llm.txt
     let docContext = "";
-
-    // Read context from llm.txt file
     try {
       const llmFilePath = join(process.cwd(), "llm.txt");
       docContext = readFileSync(llmFilePath, "utf-8");
     } catch (fileErr) {
-      console.log("Error reading llm.txt file:", fileErr);
-      docContext = "";
+      console.warn("llm.txt not found, proceeding with empty context");
     }
 
-    const systemPrompt = {
-      role: "system" as const,
-      content: `You are UpvaveGPT, an AI assistant designed to provide information about Upvave, a web development company. Use ONLY the following company information to answer questions:
+    const systemInstruction = `You are UpvaveGPT, an AI assistant designed to provide information about Upvave, a web development company. Use ONLY the following company information to answer questions:
 
 ${docContext || "No context available"}
 
 INSTRUCTIONS:
 1. Answer questions ONLY based on the information provided above.
-2. For technology-related questions (NextJS, React, Node.js, etc.), provide contextual answers about how Upvave can help with those technologies. For example, if asked about NextJS, respond like: "If you want to build a full-stack website with NextJS, Upvave can do this for you. We create amazing websites with NextJS and also add animations using Framer Motion or GSAP."
+2. For technology-related questions (NextJS, React, Node.js, etc.), provide contextual answers about how Upvave can help with those technologies.
 3. Always connect technology questions back to Upvave's services and capabilities.
 4. If a user asks something NOT covered in the company information, respond with: "I wish I could help! I don't have that information, but I can assist with questions about Upvave and our services."
 5. Be helpful, professional, and highlight Upvave's specialties and benefits.
@@ -56,25 +50,37 @@ FORMATTING INSTRUCTIONS:
 - Use bold (**text**) for important points and headings
 - Use numbered lists (1. 2. 3.) for step-by-step information
 - Use line breaks between sections for better readability
-- Use emojis where appropriate to make the response visually appealing
-- Keep paragraphs short and easy to read
-- Always structure your response with clear sections and proper spacing`,
-    };
+- Use emojis where appropriate to make the response visually appealing`;
 
-    // Format messages for OpenAI API
-    const formattedMessages = messages
-      .filter((msg: { role: string; content: string }) => msg.role !== "system")
-      .map((msg: { role: string; content: string }) => ({
-        role: msg.role as "user" | "assistant",
-        content: msg.content,
+    const ai = new GoogleGenAI({ apiKey });
+
+    // Format chat history (all messages except the last one)
+    const chatHistory = messages
+      .slice(0, -1)
+      .filter((msg: any) => msg.role !== "system")
+      .map((msg: any) => ({
+        role: msg.role === "assistant" || msg.role === "model" ? "model" : "user",
+        parts: [{ text: msg.content }],
       }));
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [systemPrompt, ...formattedMessages],
-      stream: true,
-      temperature: 0.7,
-      max_tokens: 512,
+    // Get the latest user message
+    const userPrompt = messages[messages.length - 1].content;
+
+    // Create the request config using generateContentStream
+    const response = await ai.models.generateContentStream({
+      model: "gemini-2.5-flash",
+      contents: [
+        ...chatHistory,
+        {
+          role: "user",
+          parts: [{ text: userPrompt }],
+        },
+      ],
+      config: {
+        systemInstruction,
+        temperature: 0.7,
+        maxOutputTokens: 1000,
+      },
     });
 
     const encoder = new TextEncoder();
@@ -82,28 +88,32 @@ FORMATTING INSTRUCTIONS:
       async start(controller) {
         try {
           for await (const chunk of response) {
-            if (chunk.choices[0]?.delta?.content) {
-              controller.enqueue(
-                encoder.encode(chunk.choices[0].delta.content)
-              );
+            // Access text as a property, not a function
+            const text = chunk.text;
+            if (text) {
+              controller.enqueue(encoder.encode(text));
             }
           }
           controller.close();
-        } catch (streamError) {
-          console.error("Stream error:", streamError);
-          controller.close();
+        } catch (err: any) {
+          console.error("Streaming error:", err);
+          controller.error(err);
         }
       },
     });
 
     return new Response(stream, {
       headers: {
-        "Content-Type": "text/event-stream",
+        "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache",
+        Connection: "keep-alive",
       },
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in chat route:", error);
-    return new Response("Internal server error", { status: 500 });
+    return new Response(
+      JSON.stringify({ error: error.message || "Internal Server Error" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
