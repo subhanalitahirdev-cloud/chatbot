@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UpvaveGPT Chatbot
+
+An AI-powered chatbot built with Next.js and Google's Gemini AI, designed to provide information about Upvave's web development services.
+
+![Chatbot Demo](https://img.shields.io/badge/Next.js-16.1-black?logo=next.js) ![Gemini AI](https://img.shields.io/badge/Gemini-2.5--Flash-blue?logo=google)
+
+## Features
+
+- 🤖 **AI-Powered Responses** - Uses Google Gemini 2.5 Flash for intelligent, contextual answers
+- 💬 **Real-time Streaming** - Responses stream in real-time for a smooth UX
+- 🎨 **Modern UI** - Beautiful chat interface with Lottie animations
+- 💡 **Prompt Suggestions** - Pre-built prompts to help users get started
+- 📝 **Markdown Support** - Rich text formatting in AI responses
+- 🔄 **Chat History** - Maintains conversation context
+
+## Tech Stack
+
+- **Framework**: Next.js 16.1
+- **AI**: Google Gemini AI (`@google/genai`)
+- **Styling**: Tailwind CSS 4
+- **Animations**: Lottie React
+- **Language**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- Google AI API Key
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env.local` file with your API key:
+   ```env
+   GOOGLE_API_KEY=your_api_key_here
+   ```
+
+4. (Optional) Add company context in `llm.txt` at the project root for customized responses.
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the chatbot.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/
+│   ├── api/
+│   │   └── chat/
+│   │       └── route.ts      # Gemini AI streaming endpoint
+│   ├── components/
+│   │   ├── Bubble.tsx        # Chat message bubble
+│   │   ├── PromptSuggestionRow.tsx
+│   │   └── PromptSuggestionButton.tsx
+│   └── page.tsx              # Main chat interface
+├── public/
+│   └── lottie/               # Animation files
+└── llm.txt                   # Company context for AI
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Reference
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### POST /api/chat
 
-## Deploy on Vercel
+Send messages to the AI chatbot.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Request Body:**
+```json
+{
+  "messages": [
+    { "role": "user", "content": "What is Upvave?" }
+  ]
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Response:** Streamed text response
+
+## License
+
+Private - Upvave
